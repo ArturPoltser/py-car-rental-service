@@ -14,9 +14,9 @@
   
   <p><strong>Year:</strong> {{ car.year }}</p>
   <p><strong>Horsepower:</strong> {{ car.horsepower }}</p>
-  <p><strong>Fuel Consumption:</strong> {{ car.fuel_consumption }}</p>
+  <p><strong>Fuel Consumption(l/100km):</strong> {{ car.fuel_consumption }}</p>
   <p><strong>Daily Cost:</strong> ${{ car.daily_cost }}</p>
-  <p><strong>Insurance:</strong> {% if car.insurance %}Yes{% else %}No{% endif %}</p>
+  <p><strong>Insurance:</strong> {{ car.insurance }}</p>
   <p><strong>Available to Rent:</strong> {% if car.available_to_rent %}Yes{% else %}No{% endif %}</p>
 
   <hr>

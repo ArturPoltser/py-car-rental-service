@@ -15,11 +15,13 @@ class RenterDetailView(LoginRequiredMixin, generic.DetailView):
 
 class RenterCreateView(LoginRequiredMixin, generic.CreateView):
     model = get_user_model()
+    fields = "__all__"
     success_url = reverse_lazy("")
 
 
 class RenterUpdateView(LoginRequiredMixin, generic.CreateView):
     model = get_user_model()
+    fields = "__all__"
     success_url = reverse_lazy("")
 
 
