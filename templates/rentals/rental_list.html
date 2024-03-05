@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+<h1>Rental history  
+  <a href="{% url 'rentals:rental-create' %}" class="btn btn-primary link-to-page">
+      Create
+  </a>
+</h1>
+
+
+{% if rental_list %}
+    <ul>
+        {% for rental in rental_list %}
+            <li>
+                <a href="{% url 'rentals:rental-detail' rental.pk %}">{{ rental.car.model }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No rentals available</p>
+{% endif %}
+{% endblock %}
