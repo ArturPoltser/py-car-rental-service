@@ -41,7 +41,7 @@ class Car(models.Model):
             )
         ]
     )
-    fuel_consumption = models.DecimalField(max_digits=2, decimal_places=1)
+    fuel_consumption = models.IntegerField()
     daily_cost = models.IntegerField(
         validators=[
             MinValueValidator(
