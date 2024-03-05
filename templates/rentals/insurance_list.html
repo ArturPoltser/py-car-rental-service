@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Insurance List
+    <a href="{% url 'rentals:insurance-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
+  </h1>
+  <br>
+  {% if insurance_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+      {% for insurance in insurance_list %}
+        <tr>
+          <td>
+              {{ insurance.id }}
+          </td>
+          <td>
+              {{ insurance.name }}
+          </td>
+          <td>
+              {{ insurance.description }}
+          </td>
+          <td>
+              <a href="{% url 'rentals:insurance-update' pk=insurance.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'rentals:insurance-delete' pk=insurance.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no insurances in the service.</p>
+  {% endif %}
+{% endblock %}

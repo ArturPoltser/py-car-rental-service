@@ -29,17 +29,19 @@ class InsuranceListView(LoginRequiredMixin, generic.ListView):
 
 class InsuranceCreateView(LoginRequiredMixin, generic.CreateView):
     model = Insurance
-    success_url = reverse_lazy("rentals:insurances-list")
+    fields = "__all__"
+    success_url = reverse_lazy("rentals:insurance-list")
 
 
 class InsuranceUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Insurance
-    success_url = reverse_lazy("rentals:insurances-list")
+    fields = "__all__"
+    success_url = reverse_lazy("rentals:insurance-list")
 
 
 class InsuranceDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Insurance
-    success_url = reverse_lazy("rentals:insurances-list")
+    success_url = reverse_lazy("rentals:insurance-list")
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):
