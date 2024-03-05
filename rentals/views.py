@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from rentals.models import Car, Insurance
+from rentals.models import Car, Insurance, Rental
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -64,3 +64,27 @@ class CarUpdateView(LoginRequiredMixin, generic.UpdateView):
 class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Car
     success_url = reverse_lazy("rentals:car-list")
+
+
+class RentalListView(LoginRequiredMixin, generic.ListView):
+    model = Rental
+    paginate_by = 5
+
+
+class RentalCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Rental
+    success_url = reverse_lazy("rentals:rental-list")
+
+
+class RentalDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Rental
+
+
+class RentalUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Rental
+    success_url = reverse_lazy("rentals:rental-list")
+
+
+class RentalDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Rental
+    success_url = reverse_lazy("rentals:rental-list")

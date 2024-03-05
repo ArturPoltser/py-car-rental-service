@@ -11,6 +11,11 @@ from rentals.views import (
     CarDetailView,
     CarUpdateView,
     CarDeleteView,
+    RentalListView,
+    RentalCreateView,
+    RentalDetailView,
+    RentalUpdateView,
+    RentalDeleteView,
 )
 
 
@@ -41,6 +46,31 @@ urlpatterns = [
     path("cars/<int:pk>/", CarDetailView.as_view(), name="car-detail"),
     path("cars/<int:pk>/update/", CarUpdateView.as_view(), name="car-update"),
     path("cars/<int:pk>/delete/", CarDeleteView.as_view(), name="car-delete"),
+    path(
+        "rentals/",
+        RentalListView.as_view(),
+        name="rental-list",
+    ),
+    path(
+        "rentals/create/",
+        RentalCreateView.as_view(),
+        name="rental-create",
+    ),
+    path(
+        "rentals/<int:pk>/",
+        RentalDetailView.as_view(),
+        name="rental-detail",
+    ),
+    path(
+        "rentals/<int:pk>/update/",
+        RentalUpdateView.as_view(),
+        name="rental-update",
+    ),
+    path(
+        "rentals/<int:pk>/delete/",
+        RentalDeleteView.as_view(),
+        name="rental-delete",
+    ),
 ]
 
 app_name = "rentals"
