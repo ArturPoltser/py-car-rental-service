@@ -40,3 +40,27 @@ class InsuranceUpdateView(LoginRequiredMixin, generic.UpdateView):
 class InsuranceDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Insurance
     success_url = reverse_lazy("rentals:insurances-list")
+
+
+class CarListView(LoginRequiredMixin, generic.ListView):
+    model = Car
+    paginate_by = 5
+
+
+class CarDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Car
+
+
+class CarCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Car
+    success_url = reverse_lazy("rentals:car-list")
+
+
+class CarUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Car
+    success_url = reverse_lazy("rentals:car-list")
+
+
+class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Car
+    success_url = reverse_lazy("rentals:car-list")
