@@ -14,7 +14,10 @@ urlpatterns = [
     path(
         "renters/<int:pk>/", RenterDetailView.as_view(), name="renter-detail"
     ),
-    path("renters/update/", RenterUpdateView.as_view(), name="renter-update"),
+    path(
+        "renters/<int:pk>/update/",
+        RenterUpdateView.as_view(),
+        name="renter-update"),
     path(
         "renters/<int:pk>/delete/",
         RenterDeleteView.as_view(),

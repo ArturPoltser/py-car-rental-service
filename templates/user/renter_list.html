@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <a href="{% url 'user:renter-create' %}" class="btn btn-primary link-to-page">
+      Create
+  </a>
+<h1>Renter List</h1>
+
+{% if renter_list %}
+    <ul>
+        {% for renter in renter_list %}
+            <li>
+                <a href="{% url 'user:renter-detail' renter.pk %}">{{ renter }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No renters available</p>
+{% endif %}
+{% endblock %}
