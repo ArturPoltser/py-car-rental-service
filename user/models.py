@@ -5,6 +5,8 @@ from django.db import models
 
 class Renter(AbstractUser):
     max_daily_budget = models.IntegerField(
+        null=True,
+        blank=True,
         validators=[
             MinValueValidator(
                 limit_value=100,

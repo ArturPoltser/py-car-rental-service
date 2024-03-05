@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("rentals.urls", namespace="rentals")),
     path("", include("user.urls", namespace="user")),
     path("accounts/", include("django.contrib.auth.urls")),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]
