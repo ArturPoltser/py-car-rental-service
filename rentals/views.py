@@ -71,12 +71,13 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 class RentalListView(LoginRequiredMixin, generic.ListView):
-    model = Rental
+    queryset = Rental.objects.select_related("car")
     paginate_by = 5
 
 
 class RentalCreateView(LoginRequiredMixin, generic.CreateView):
     model = Rental
+    fields = "__all__"
     success_url = reverse_lazy("rentals:rental-list")
 
 
@@ -86,6 +87,7 @@ class RentalDetailView(LoginRequiredMixin, generic.DetailView):
 
 class RentalUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Rental
+    fields = "__all__"
     success_url = reverse_lazy("rentals:rental-list")
 
 
