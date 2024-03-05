@@ -56,6 +56,7 @@ class Car(models.Model):
     )
     available_to_rent = models.BooleanField(default=True)
     insurance = models.ForeignKey(Insurance, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="", null=True, blank=True)
 
     def __str__(self):
         return self.model
