@@ -2,12 +2,12 @@
 
 {% block content %}
   
-<h1>{{ rental }}
-    <a href="{% url 'rentals:rental-delete' pk=rental.id %}" class="btn btn-danger link-to-page">
+<h1>Rental #{{ rental.id }}
+    <a href="{% url 'rentals:rental-delete' pk=rental.car.id r_pk=rental.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
 
-    <a href="{% url 'rentals:rental-update' pk=rental.id %}" class="btn btn-secondary link-to-page">
+    <a href="{% url 'rentals:rental-update' pk=rental.car.id r_pk=rental.id %}" class="btn btn-secondary link-to-page">
       Update
     </a>
 </h1>

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Edit booking for {{ rental.car }}</h2>
+  
+  <form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <a class="btn btn-primary" href={% url "rentals:rental-list" pk=rental.car.id %}>Cancel</a>
+  </form>
+  
+
+{% endblock %}
