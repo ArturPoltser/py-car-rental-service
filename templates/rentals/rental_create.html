@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>{{ object|yesno:"Edit,Create" }} Rental for {{ car.model }}</h2>
+  <h2>Book {{ car }}</h2>
   
   <form method="post">
     {% csrf_token %}
@@ -9,7 +9,7 @@
     {{ form.as_p }}
     
     <input type="submit" value="Submit" class="btn btn-primary">
-    <a class="btn btn-primary" href="">Cancel</a>
+    <a class="btn btn-primary" href={% url "rentals:car-detail" pk=car.id %}>Cancel</a>
   </form>
   
 

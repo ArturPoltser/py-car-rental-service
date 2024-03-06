@@ -7,7 +7,7 @@
     <ul>
       {% for rental in rentals %}
         <li>
-          Rental #{{ rental.pk }}:
+          <a href="{% url 'rentals:rental-detail' pk=car.id r_pk=rental.id%}">Rental #{{ rental.pk }}</a>:
           From {{ rental.start_date }} to {{ rental.end_date }}
           by {{ rental.renter.username }}{% if rental.renter.id == user.id %} (Me){% endif %}
         </li>
