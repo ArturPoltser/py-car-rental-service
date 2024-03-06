@@ -19,4 +19,6 @@
 {% else %}
     <p>No cars available</p>
 {% endif %}
+  <p>We can also rent your car!</p>
+  <a class="btn btn-success" href="{% url 'rentals:car-create' %}">Add your car!</a>
 {% endblock %}

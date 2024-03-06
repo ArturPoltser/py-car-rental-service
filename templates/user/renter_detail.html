@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Username: {{ driver.username }}
+  <h2>
+    Renter details
     <a href="{% url 'user:renter-delete' pk=renter.pk %}" class="btn btn-danger link-to-page">
       Delete
     </a>
@@ -10,11 +10,20 @@
     <a href="{% url 'user:renter-update' pk=renter.pk %}" class="btn btn-secondary link-to-page">
       Update
     </a>
-  </h1>
+  </h2>
 
+  <p><strong>Username:</strong> {{ renter.username }}</p>
   <p><strong>First name:</strong> {{ renter.first_name }}</p>
   <p><strong>Last name:</strong> {{ renter.last_name }}</p>
-  <p><strong>License number:</strong> {{ renter.license_number }}</p>
-  <p><strong>Is staff:</strong> {{ renter.is_staff }}</p>
-
+  <p><strong>Driver license:</strong> {{ renter.driver_license }}</p>
+  <h4>Rental history:</h4>
+  {% if rental_history %}
+  <ul>
+    {% for rental in rental_history %}
+      <li>{{ rental.car.model }} - {{ rental.start_date }} to {{ rental.end_date }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>No rental history for this renter yet.</p>
+  {% endif %}
 {% endblock %}
