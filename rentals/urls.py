@@ -12,10 +12,10 @@ from rentals.views import (
     CarUpdateView,
     CarDeleteView,
     RentalListView,
-    RentalCreateView,
-    RentalDetailView,
-    RentalUpdateView,
-    RentalDeleteView,
+    rental_detail_view,
+    rental_update_view,
+    rental_create_view,
+    rental_delete_view,
 )
 
 
@@ -53,22 +53,22 @@ urlpatterns = [
     ),
     path(
         "cars/<int:pk>/rentals/create/",
-        RentalCreateView.as_view(),
+        rental_create_view,
         name="rental-create",
     ),
     path(
         "cars/<int:pk>/rentals/<int:r_pk>/",
-        RentalDetailView.as_view(),
+        rental_detail_view,
         name="rental-detail",
     ),
     path(
         "cars/<int:pk>/rentals/<int:r_pk>/update/",
-        RentalUpdateView.as_view(),
+        rental_update_view,
         name="rental-update",
     ),
     path(
         "cars/<int:pk>/rentals/<int:r_pk>/delete/",
-        RentalDeleteView.as_view(),
+        rental_delete_view,
         name="rental-delete",
     ),
 ]

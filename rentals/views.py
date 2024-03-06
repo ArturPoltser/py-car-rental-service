@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
+from rentals.forms import RentalForm
 from rentals.models import Car, Insurance, Rental
 
 
@@ -71,26 +73,68 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 class RentalListView(LoginRequiredMixin, generic.ListView):
-    queryset = Rental.objects.select_related("car")
-    paginate_by = 5
-
-
-class RentalCreateView(LoginRequiredMixin, generic.CreateView):
     model = Rental
-    fields = "__all__"
-    success_url = reverse_lazy("rentals:rental-list")
+    context_object_name = "rentals"
+
+    def get_queryset(self):
+        queryset = Rental.objects.select_related("renter")
+        car = get_object_or_404(Car, pk=self.kwargs["pk"])
+        return queryset.filter(car=car)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["car"] = get_object_or_404(Car, pk=self.kwargs["pk"])
+        return context
 
 
-class RentalDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Rental
+@login_required
+def rental_create_view(request, pk):
+    car = get_object_or_404(Car, pk=pk)
+    form = RentalForm(request.POST)
+
+    if request.method == "POST":
+        if form.is_valid():
+            rental = form.save(commit=False)
+            rental.car = car
+            rental.renter = request.user
+            rental.save()
+            return redirect("rentals:car-detail", pk=pk)
+
+    context = {"car": car, "form": form}
+    return render(request, "rentals/rental_create.html", context)
 
 
-class RentalUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Rental
-    fields = "__all__"
-    success_url = reverse_lazy("rentals:rental-list")
+@login_required
+def rental_detail_view(request, pk, r_pk):
+    car_id = pk
+    rental = get_object_or_404(Rental, car_id=car_id, pk=r_pk)
+    context = {"rental": rental}
+    return render(request, "rentals/rental_detail.html", context)
 
 
-class RentalDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Rental
-    success_url = reverse_lazy("rentals:rental-list")
+@login_required
+def rental_update_view(request, pk, r_pk):
+    car_id = pk
+    rental = get_object_or_404(Rental, car_id=car_id, pk=r_pk)
+    form = RentalForm(request.POST, instance=rental)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect("rentals:rental-list", pk=car_id)
+
+    context = {"form": form, "rental": rental}
+    return render(request, "rentals/rental_update.html", context)
+
+
+@login_required
+def rental_delete_view(request, pk, r_pk):
+    car_id = pk
+    rental = get_object_or_404(Rental, car_id=car_id, pk=r_pk)
+
+    if request.method == "POST":
+        rental.delete()
+        return redirect("rentals:rental-list", pk=car_id)
+
+    context = {"rental": rental}
+    return render(request, "rentals/rental_confirm_delete.html", context)
