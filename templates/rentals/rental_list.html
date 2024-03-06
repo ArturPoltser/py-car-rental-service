@@ -1,23 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <h2>Rental history for {{ car.model }}</h2>
   
-<h1>Rental history  
-  <a href="{% url 'rentals:rental-create' %}" class="btn btn-primary link-to-page">
-      Create
-  </a>
-</h1>
-
-
-{% if rental_list %}
+  {% if rentals %}
     <ul>
-        {% for rental in rental_list %}
-            <li>
-                <a href="{% url 'rentals:rental-detail' rental.pk %}">{{ rental.car.model }}</a>
-            </li>
-        {% endfor %}
+      {% for rental in rentals %}
+        <li>
+          Rental #{{ rental.pk }}:
+          From {{ rental.start_date }} to {{ rental.end_date }}
+          by {{ rental.renter.username }}{% if rental.renter.id == user.id %} (Me){% endif %}
+        </li>
+      {% endfor %}
     </ul>
-{% else %}
-    <p>No rentals available</p>
-{% endif %}
+  {% else %}
+    <p>No rental history for this car yet.</p>
+  {% endif %}
 {% endblock %}
