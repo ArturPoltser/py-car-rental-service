@@ -36,3 +36,21 @@ class RentalForm(forms.ModelForm):
                 "The selected dates are already occupied. "
                 f"Occupied dates: {', '.join(occupied_dates_list)}."
             )
+
+
+class CarSearchForm(forms.Form):
+    model = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by model"})
+    )
+
+
+class InsuranceSearchForm(forms.Form):
+    name = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by model"})
+    )

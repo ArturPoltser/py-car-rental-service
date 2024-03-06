@@ -3,6 +3,11 @@
 {% block content %}
 
 <h1>Renter List  <a href="{% url 'user:renter-create' %}" class="btn btn-primary">Create</a></h1>
+  <form method="get" action="" class="form-inline">
+    {{ search_form }}
+    <input type="submit" value="Search" class="btn btn-primary">
+  </form>
+  <br>
 
 {% if renter_list %}
     <ul>

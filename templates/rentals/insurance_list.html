@@ -7,6 +7,10 @@
       Create
     </a>
   </h1>
+  <form method="get" action="" class="form-inline">
+    {{ search_form }}
+    <input type="submit" value="Search" class="btn btn-primary">
+  </form>
   <br>
   {% if insurance_list %}
     <table class="table">
