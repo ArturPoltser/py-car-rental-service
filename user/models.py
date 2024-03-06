@@ -1,19 +1,9 @@
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MinValueValidator, RegexValidator
+from django.core.validators import RegexValidator
 from django.db import models
 
 
 class Renter(AbstractUser):
-    max_daily_budget = models.IntegerField(
-        null=True,
-        blank=True,
-        validators=[
-            MinValueValidator(
-                limit_value=100,
-                message="We don't have such car for this budget. Sorry."
-            )
-        ]
-    )
     driver_license = models.CharField(
         max_length=255,
         unique=True,
