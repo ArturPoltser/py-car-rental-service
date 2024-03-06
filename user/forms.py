@@ -17,3 +17,12 @@ class RenterNameAndLicenseUpdateForm(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ["driver_license", "first_name", "last_name"]
+
+
+class RenterSearchForm(forms.Form):
+    username = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by username"})
+    )

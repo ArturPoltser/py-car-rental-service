@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
-from rentals.forms import RentalForm
+from rentals.forms import RentalForm, CarSearchForm, InsuranceSearchForm
 from rentals.models import Car, Insurance, Rental
 
 
@@ -25,8 +25,22 @@ def index(request: HttpRequest) -> HttpResponse:
 
 
 class InsuranceListView(LoginRequiredMixin, generic.ListView):
-    model = Insurance
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["search_form"] = InsuranceSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Insurance.objects.all()
+        form = InsuranceSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(name__icontains=form.cleaned_data["name"])
+        return queryset
 
 
 class InsuranceCreateView(LoginRequiredMixin, generic.CreateView):
@@ -47,8 +61,22 @@ class InsuranceDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):
-    model = Car
     paginate_by = 5
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        model = self.request.GET.get("model", "")
+        context["search_form"] = CarSearchForm(
+            initial={"model": model}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Car.objects.select_related("insurance")
+        form = CarSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(model__icontains=form.cleaned_data["model"])
+        return queryset
 
 
 class CarDetailView(LoginRequiredMixin, generic.DetailView):
