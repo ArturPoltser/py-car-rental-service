@@ -47,27 +47,27 @@ urlpatterns = [
     path("cars/<int:pk>/update/", CarUpdateView.as_view(), name="car-update"),
     path("cars/<int:pk>/delete/", CarDeleteView.as_view(), name="car-delete"),
     path(
-        "rentals/",
+        "cars/<int:pk>/rentals/",
         RentalListView.as_view(),
         name="rental-list",
     ),
     path(
-        "rentals/create/",
+        "cars/<int:pk>/rentals/create/",
         RentalCreateView.as_view(),
         name="rental-create",
     ),
     path(
-        "rentals/<int:pk>/",
+        "cars/<int:pk>/rentals/<int:r_pk>/",
         RentalDetailView.as_view(),
         name="rental-detail",
     ),
     path(
-        "rentals/<int:pk>/update/",
+        "cars/<int:pk>/rentals/<int:r_pk>/update/",
         RentalUpdateView.as_view(),
         name="rental-update",
     ),
     path(
-        "rentals/<int:pk>/delete/",
+        "cars/<int:pk>/rentals/<int:r_pk>/delete/",
         RentalDeleteView.as_view(),
         name="rental-delete",
     ),
