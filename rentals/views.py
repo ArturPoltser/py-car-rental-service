@@ -90,9 +90,9 @@ class RentalListView(LoginRequiredMixin, generic.ListView):
 @login_required
 def rental_create_view(request, pk):
     car = get_object_or_404(Car, pk=pk)
-    form = RentalForm(request.POST)
 
     if request.method == "POST":
+        form = RentalForm(request.POST)
         if form.is_valid():
             rental = form.save(commit=False)
             rental.car = car
@@ -100,6 +100,7 @@ def rental_create_view(request, pk):
             rental.save()
             return redirect("rentals:car-detail", pk=pk)
 
+    form = RentalForm()
     context = {"car": car, "form": form}
     return render(request, "rentals/rental_create.html", context)
 

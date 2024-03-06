@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Create renter</h1>
+  <h1>{{ object|yesno:"Update,Create" }} renter</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form }}
-
+  <br>
     <input type="submit" value="Submit" class="btn btn-primary">
+    <a class="btn btn-primary" href={% url "user:renter-list" %}>Cancel</a>
   </form>
+
 {% endblock %}

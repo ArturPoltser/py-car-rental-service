@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <a href="{% url 'user:renter-create' %}" class="btn btn-primary link-to-page">
-      Create
-  </a>
-<h1>Renter List</h1>
+
+<h1>Renter List  <a href="{% url 'user:renter-create' %}" class="btn btn-primary">Create</a></h1>
 
 {% if renter_list %}
     <ul>
