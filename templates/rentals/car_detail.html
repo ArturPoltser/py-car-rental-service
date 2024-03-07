@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
+  <div class="content-div">
+  <h1 class="h1_custom" >
     {{ car.model }}
-    <a href="{% url 'rentals:rental-create' pk=car.id %}" class="btn btn-danger">
+    <a href="{% url 'rentals:rental-create' pk=car.id %}" class="btn btn-success">
     Rent this car
     </a>
 
@@ -26,4 +27,5 @@
   <a href="{% url 'rentals:rental-list' pk=car.id %}" class="btn btn-secondary">
       {{ car }} rental history
   </a>
+  </div>
 {% endblock %}

@@ -1,13 +1,92 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Material Kit 2 by Creative Tim {% endblock title %}
+
+{% block body %} class="index-page bg-gray-200" {% endblock body %}
 
 {% block content %}
-    <h1>OnTheGo Rentals</h1>
-    <p>Welcome to Best car rental service!</p>
-    <p>OnTheGo Rentals has the following record counts:</p>
-    <ul>
-        <li><strong>Cars:</strong> {{ num_cars }}</li>
-        <li><strong>Renters:</strong> {{ num_renters }}</li>
-        <li><strong>Insurances:</strong> {{ num_insurances }}</li>
-    </ul>
 
-{% endblock %}
+<header class="header-2" >
+  <div class="page-header min-vh-75 relative" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 50px">
+    <div class="container" >
+      <div class="row">
+        <div class="col-lg-7 text-center mx-auto">
+          <h1 class="text-white pt-3 mt-n5">OnTheGo Rentals</h1>
+          <p class="lead text-white mt-3">Welcome to OnTheGo Rentals – Your Ultimate Car Rental Solution <br/>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<section class="pt-3 pb-4" id="count-stats" >
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 z-index-2 border-radius-xl mt-n10 mx-auto py-3 blur shadow-blur">
+        <div class="row">
+          <div class="col-md-4 position-relative">
+            <div class="p-3 text-center">
+              <h1 style="color: darkred"><span>{{ num_cars }}</span></h1>
+              <h5 class="mt-3">Amount of cars</h5>
+              <p class="text-sm">We have a large selection of cars!</p>
+            </div>
+            <hr class="vertical dark">
+          </div>
+          <div class="col-md-4 position-relative">
+            <div class="p-3 text-center">
+              <h1 style="color: darkred"> <span>{{ num_insurances }}</span></h1>
+              <h5 class="mt-3">Insurances</h5>
+              <p class="text-sm">We cooperate with {{ num_insurances }} best insurance companies</p>
+            </div>
+            <hr class="vertical dark">
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 text-center">
+              <h1 style="color: darkred">{{ num_renters }}</h1>
+              <h5 class="mt-3">Renters</h5>
+              <p class="text-sm">We have {{ num_renters }} regular renters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------   START PRE-FOOTER 2 - simple social line w/ title & 3 buttons    -------- -->
+
+{% endblock content %}
+
+{% block javascripts %}
+
+<script type="text/javascript">
+
+  if (document.getElementById('state1')) {
+    const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+    if (!countUp.error) {
+      countUp.start();
+    } else {
+      console.error(countUp.error);
+    }
+  }
+  if (document.getElementById('state2')) {
+    const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+    if (!countUp1.error) {
+      countUp1.start();
+    } else {
+      console.error(countUp1.error);
+    }
+  }
+  if (document.getElementById('state3')) {
+    const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+    if (!countUp2.error) {
+      countUp2.start();
+    } else {
+      console.error(countUp2.error);
+    };
+  }
+</script>
+
+{% endblock javascripts %}

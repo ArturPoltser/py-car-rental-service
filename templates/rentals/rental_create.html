@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Book {{ car }}</h2>
+  <div class="content-div">
+  <h2 class="h1_custom">Book {{ car }}</h2>
   
-  <form method="post">
+  <form method="post" style="color: white">
     {% csrf_token %}
-    
     {{ form.as_p }}
     
-    <input type="submit" value="Submit" class="btn btn-primary">
-    <a class="btn btn-primary" href={% url "rentals:car-detail" pk=car.id %}>Cancel</a>
+    <input type="submit" value="Submit" class="btn btn-secondary">
+    <a class="btn btn-secondary" href="{% url 'rentals:car-detail' pk=car.id %}">Cancel</a>
   </form>
-  
-
+  </div>
 {% endblock %}

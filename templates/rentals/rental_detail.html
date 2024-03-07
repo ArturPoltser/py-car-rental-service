@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="content-div">
   
-<h1>Rental #{{ rental.id }}
+<h1 class="h1_custom">Rental #{{ rental.id }}
     <a href="{% url 'rentals:rental-delete' pk=rental.car.id r_pk=rental.id %}" class="btn btn-danger link-to-page">
       Delete
     </a>
@@ -16,5 +17,5 @@
 <p><strong>Renter:</strong> {{ rental.renter }}</p>
 <p><strong>Start Date:</strong> {{ rental.start_date }}</p>
 <p><strong>End Date:</strong> {{ rental.end_date }}</p>
-
+    </div>
 {% endblock %}

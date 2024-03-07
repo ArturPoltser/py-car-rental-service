@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete car?</h1>
-  <form action="" method="post">
+  <div class="content-div">
+  <h1 class="h1_custom">Delete car?</h1>
+  <form action="" method="post" >
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
-    <a class="btn btn-primary" href={% url "rentals:car-detail" pk=car.id %}>No</a>
+    <a class="btn btn-secondary" href={% url "rentals:car-detail" pk=car.id %}>No</a>
   </form>
+  </div>
 {% endblock %}

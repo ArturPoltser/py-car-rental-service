@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>
+  <div class="content-div">
+  <h2 class="h1_custom">
     Renter details
     <a href="{% url 'user:renter-delete' pk=renter.pk %}" class="btn btn-danger link-to-page">
       Delete
@@ -16,7 +17,7 @@
   <p><strong>First name:</strong> {{ renter.first_name }}</p>
   <p><strong>Last name:</strong> {{ renter.last_name }}</p>
   <p><strong>Driver license:</strong> {{ renter.driver_license }}</p>
-  <h4>Rental history:</h4>
+  <h4 class="h1_custom">Rental history:</h4>
   {% if rental_history %}
   <ul>
     {% for rental in rental_history %}
@@ -26,4 +27,5 @@
   {% else %}
     <p>No rental history for this renter yet.</p>
   {% endif %}
+  </div>
 {% endblock %}

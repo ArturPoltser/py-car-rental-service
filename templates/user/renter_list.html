@@ -1,23 +1,44 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
+  <div class="content-div">
+    <h1 class="h1_custom">
+      Our Renters
+      <a href="{% url 'user:renter-create' %}" class="btn btn-success link-to-page">Create new renter</a>
+    </h1>
+    <form method="get" action="" class="form-inline">
+      {{ search_form|crispy }}
+      <input type="submit" value="🔎" class="btn btn-secondary">
+    </form>
+    <br>
 
-<h1>Renter List  <a href="{% url 'user:renter-create' %}" class="btn btn-primary">Create</a></h1>
-  <form method="get" action="" class="form-inline">
-    {{ search_form }}
-    <input type="submit" value="Search" class="btn btn-primary">
-  </form>
-  <br>
-
-{% if renter_list %}
-    <ul>
-        {% for renter in renter_list %}
-            <li>
-                <a href="{% url 'user:renter-detail' renter.pk %}">{{ renter }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No renters available</p>
-{% endif %}
+    {% if renter_list %}
+      <table class="table" style="color: white">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Full Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for renter in renter_list %}
+            <tr>
+              <td>
+                <a class="btn" style="background-color: lightgray" href="{% url 'user:renter-detail' renter.pk %}">
+                  {{ renter.username }}
+                </a>
+              </td>
+              <td>
+                  {{ renter.first_name }} {{ renter.last_name }}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No renters available</p>
+    {% endif %}
+  </div>
 {% endblock %}
+
