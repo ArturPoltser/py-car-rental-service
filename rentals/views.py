@@ -115,22 +115,41 @@ class RentalListView(LoginRequiredMixin, generic.ListView):
         return context
 
 
-@login_required
-def rental_create_view(request, pk):
-    car = get_object_or_404(Car, pk=pk)
+class RentalCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Rental
+    form_class = RentalForm
+    template_name = "rentals/rental_create.html"
 
-    if request.method == "POST":
+    def get_success_url(self):
+        return reverse_lazy("rentals:car-detail", kwargs={"pk": self.object.car.id})
+
+    def get_context_data(self, **kwargs) -> dict:
+        context = super().get_context_data(**kwargs)
+        car_pk = self.kwargs.get("pk")
+        car = Car.objects.get(pk=car_pk)
+        context["car"] = car
+        context["form"] = RentalForm(
+            initial={"car": car, "renter": self.request.user}
+        )
+        return context
+
+    @staticmethod
+    def post(request: HttpRequest, **kwargs) -> HttpResponse:
+        car = Car.objects.get(id=kwargs["pk"])
         form = RentalForm(request.POST)
         if form.is_valid():
             rental = form.save(commit=False)
             rental.car = car
             rental.renter = request.user
             rental.save()
-            return redirect("rentals:car-detail", pk=pk)
+            return redirect("rentals:car-detail", pk=kwargs["pk"])
 
-    form = RentalForm()
-    context = {"car": car, "form": form}
-    return render(request, "rentals/rental_create.html", context)
+        return render(
+            request, "rentals/rental_create.html", context={
+                "car": car,
+                "form": form
+            }
+        )
 
 
 @login_required
@@ -145,13 +164,14 @@ def rental_detail_view(request, pk, r_pk):
 def rental_update_view(request, pk, r_pk):
     car_id = pk
     rental = get_object_or_404(Rental, car_id=car_id, pk=r_pk)
-    form = RentalForm(request.POST, instance=rental)
 
     if request.method == "POST":
+        form = RentalForm(request.POST, instance=rental)
         if form.is_valid():
             form.save()
             return redirect("rentals:rental-list", pk=car_id)
 
+    form = RentalForm(instance=rental)
     context = {"form": form, "rental": rental}
     return render(request, "rentals/rental_update.html", context)
 
