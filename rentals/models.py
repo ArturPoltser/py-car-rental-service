@@ -67,17 +67,5 @@ class Rental(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
 
-    def clean(self):
-        if self.end_date < self.start_date:
-            raise ValidationError("End date must not be earlier than the start date.")
-
-        total_period = (self.end_date - self.start_date).days
-        if total_period > 30:
-            raise ValidationError("The total rental period must not exceed 30 days.")
-
-    def save(self, *args, **kwargs):
-        self.full_clean()
-        return super().save(*args, **kwargs)
-
     def __str__(self):
         return f"Rental #{self.pk} - {self.car} by {self.renter}"

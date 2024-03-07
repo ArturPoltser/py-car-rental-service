@@ -14,8 +14,8 @@ from rentals.views import (
     RentalListView,
     rental_detail_view,
     rental_update_view,
-    rental_create_view,
     rental_delete_view,
+    RentalCreateView,
 )
 
 
@@ -53,7 +53,7 @@ urlpatterns = [
     ),
     path(
         "cars/<int:pk>/rentals/create/",
-        rental_create_view,
+        RentalCreateView.as_view(),
         name="rental-create",
     ),
     path(
