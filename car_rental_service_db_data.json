@@ -1,0 +1,753 @@
+[
+  {
+    "model": "rentals.insurance",
+    "pk": 1,
+    "fields": {
+      "name": "SecureGuard Plus",
+      "description": "Comprehensive insurance coverage for your assets."
+    }
+  },
+  {
+    "model": "rentals.insurance",
+    "pk": 2,
+    "fields": {
+      "name": "RentShield Elite",
+      "description": "Top-tier insurance to safeguard your rental investments."
+    }
+  },
+  {
+    "model": "rentals.insurance",
+    "pk": 3,
+    "fields": {
+      "name": "PropertyGuard Pro",
+      "description": "Professional-grade insurance for property owners and managers."
+    }
+  },
+  {
+    "model": "rentals.insurance",
+    "pk": 4,
+    "fields": {
+      "name": "SafeRent Assurance",
+      "description": "Ensuring the safety and security of your rental assets."
+    }
+  },
+  {
+    "model": "rentals.insurance",
+    "pk": 5,
+    "fields": {
+      "name": "GuardianRent Plus",
+      "description": "Extra protection for your rental properties and investments."
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$6uM28XWOFX6ewyloJzjqmt$L+ZhofPylneoaL2iZS4sZu4ZMUNb4oIevfAdzOMn/eE=",
+      "last_login": "2023-08-08T14:14:03Z",
+      "is_superuser": true,
+      "username": "admin.user",
+      "first_name": "Admin",
+      "last_name": "User",
+      "email": "admin.user@rentals.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2023-08-08T13:58:29Z",
+      "driver_license": "AD56984",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$73Z1Y57bcoscZ37s9rE9v0$4SEQ0TtXwJKzO5/CRdFSrTifatiPjkZ38gM2H8Kqsdg=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "bruce.wayne",
+      "first_name": "Bruce",
+      "last_name": "Wayne",
+      "email": "the_bat@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-08T14:17:04Z",
+      "driver_license": "BW26458",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$QtPol3T7x9quBj4BnbnVwW$UwT4kihkRfSvQEWEeuqVKwMgis2ikKVZfJDBcQMvOKY=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "steve.rogers",
+      "first_name": "Steve",
+      "last_name": "Rogers",
+      "email": "mr.captain@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-08T14:19:09Z",
+      "driver_license": "SR26531",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "tony.stark",
+      "first_name": "Tony",
+      "last_name": "Stark",
+      "email": "i_am_the@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-08T14:19:09Z",
+      "driver_license": "IM26231",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l1$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "geralt.rivia",
+      "first_name": "Geralt",
+      "last_name": "FromRivia",
+      "email": "witcher@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "GR25131",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "astarion.vamp",
+      "first_name": "Astarion",
+      "last_name": "Vamp",
+      "email": "astarion.vamp@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "AV25131",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "mr.dovakin",
+      "first_name": "Mr",
+      "last_name": "Dovakin",
+      "email": "mr.dovakin@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "DO35131",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ezio.auditore",
+      "first_name": "Ezio",
+      "last_name": "Auditore",
+      "email": "ezio.auditore@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "EA34131",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "arthur.pendragon",
+      "first_name": "Arthur",
+      "last_name": "Pendragon",
+      "email": "the_king@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "AP34231",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ricardo.milos",
+      "first_name": "Ricardo",
+      "last_name": "Milos",
+      "email": "ricardo@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "RM39231",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "levi.ackerman",
+      "first_name": "Levi",
+      "last_name": "Ackerman",
+      "email": "levi.ackerman@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "LA09631",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "user.renter",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$320000$9yU0PLTDKlL02PedUtk2l2$LKjj8O1xGiPGEkDpjsHk87db1iLgt8dgDqECzcsivio",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "json.st",
+      "first_name": "Jason",
+      "last_name": "Statham",
+      "email": "json.st@rentals.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-08-09T14:19:09Z",
+      "driver_license": "JS09631",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 1,
+    "fields": {
+      "model": "Lincoln Continental",
+      "year": 2018,
+      "horsepower": 400,
+      "fuel_consumption": 11,
+      "daily_cost": 180,
+      "insurance": 1,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 2,
+    "fields": {
+      "model": "Ford Mustang",
+      "year": 2019,
+      "horsepower": 450,
+      "fuel_consumption": 12,
+      "daily_cost": 280,
+      "insurance": 2,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 3,
+    "fields": {
+      "model": "Toyota Camry",
+      "year": 2020,
+      "horsepower": 200,
+      "fuel_consumption": 8,
+      "daily_cost": 150,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 5,
+    "fields": {
+      "model": "Honda Accord",
+      "year": 2021,
+      "horsepower": 190,
+      "fuel_consumption": 8,
+      "daily_cost": 170,
+      "insurance": 2,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 6,
+    "fields": {
+      "model": "Lamborghini Huracan",
+      "year": 2021,
+      "horsepower": 790,
+      "fuel_consumption": 18,
+      "daily_cost": 600,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 7,
+    "fields": {
+      "model": "Porsche 911",
+      "year": 2021,
+      "horsepower": 520,
+      "fuel_consumption": 14,
+      "daily_cost": 450,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 8,
+    "fields": {
+      "model": "BMW M5",
+      "year": 2023,
+      "horsepower": 600,
+      "fuel_consumption": 15,
+      "daily_cost": 380,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 9,
+    "fields": {
+      "model": "Mercedes-Benz S-Class",
+      "year": 2022,
+      "horsepower": 550,
+      "fuel_consumption": 13,
+      "daily_cost": 470,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 10,
+    "fields": {
+      "model": "Audi R8",
+      "year": 2021,
+      "horsepower": 610,
+      "fuel_consumption": 16,
+      "daily_cost": 520,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 13,
+    "fields": {
+      "model": "Honda Civic",
+      "year": 2022,
+      "horsepower": 234,
+      "fuel_consumption": 8,
+      "daily_cost": 180,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 14,
+    "fields": {
+      "model": "Kia Forte",
+      "year": 2019,
+      "horsepower": 147,
+      "fuel_consumption": 5,
+      "daily_cost": 110,
+      "insurance": 2,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 15,
+    "fields": {
+      "model": "Lexus RX",
+      "year": 2021,
+      "horsepower": 295,
+      "fuel_consumption": 15,
+      "daily_cost": 290,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 16,
+    "fields": {
+      "model": "Infiniti Q60",
+      "year": 2022,
+      "horsepower": 300,
+      "fuel_consumption": 16,
+      "daily_cost": 340,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 17,
+    "fields": {
+      "model": "Cadillac XT5",
+      "year": 2020,
+      "horsepower": 310,
+      "fuel_consumption": 24,
+      "daily_cost": 230,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 18,
+    "fields": {
+      "model": "Acura TLX",
+      "year": 2021,
+      "horsepower": 272,
+      "fuel_consumption": 14,
+      "daily_cost": 210,
+      "insurance": 2,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 19,
+    "fields": {
+      "model": "Volvo XC60",
+      "year": 2022,
+      "horsepower": 250,
+      "fuel_consumption": 12,
+      "daily_cost": 200,
+      "insurance": 2,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 20,
+    "fields": {
+      "model": "Buick Enclave",
+      "year": 2020,
+      "horsepower": 310,
+      "fuel_consumption": 9,
+      "daily_cost": 240,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 21,
+    "fields": {
+      "model": "Genesis G80",
+      "year": 2021,
+      "horsepower": 300,
+      "fuel_consumption": 11,
+      "daily_cost": 220,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 22,
+    "fields": {
+      "model": "Maserati Ghibli",
+      "year": 2022,
+      "horsepower": 345,
+      "fuel_consumption": 12,
+      "daily_cost": 280,
+      "insurance": 5,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 23,
+    "fields": {
+      "model": "Alfa Romeo Giulia",
+      "year": 2020,
+      "horsepower": 320,
+      "fuel_consumption": 25,
+      "daily_cost": 290,
+      "insurance": 3,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.car",
+    "pk": 24,
+    "fields": {
+      "model": "Land Rover Discovery",
+      "year": 2021,
+      "horsepower": 340,
+      "fuel_consumption": 14,
+      "daily_cost": 270,
+      "insurance": 4,
+      "available_to_rent": true
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 1,
+    "fields": {
+      "car": 1,
+      "renter": 2,
+      "start_date": "2024-03-07",
+      "end_date": "2024-03-14"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 2,
+    "fields": {
+      "car": 3,
+      "renter": 4,
+      "start_date": "2024-03-15",
+      "end_date": "2024-03-21"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 3,
+    "fields": {
+      "car": 6,
+      "renter": 5,
+      "start_date": "2024-03-10",
+      "end_date": "2024-03-17"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 4,
+    "fields": {
+      "car": 9,
+      "renter": 6,
+      "start_date": "2024-03-22",
+      "end_date": "2024-03-29"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 5,
+    "fields": {
+      "car": 13,
+      "renter": 7,
+      "start_date": "2024-03-12",
+      "end_date": "2024-03-19"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 6,
+    "fields": {
+      "car": 5,
+      "renter": 8,
+      "start_date": "2024-03-18",
+      "end_date": "2024-03-25"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 7,
+    "fields": {
+      "car": 8,
+      "renter": 9,
+      "start_date": "2024-03-25",
+      "end_date": "2024-04-01"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 8,
+    "fields": {
+      "car": 13,
+      "renter": 10,
+      "start_date": "2024-03-08",
+      "end_date": "2024-03-15"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 9,
+    "fields": {
+      "car": 14,
+      "renter": 11,
+      "start_date": "2024-03-14",
+      "end_date": "2024-03-21"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 10,
+    "fields": {
+      "car": 2,
+      "renter": 12,
+      "start_date": "2024-03-20",
+      "end_date": "2024-03-27"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 11,
+    "fields": {
+      "car": 5,
+      "renter": 3,
+      "start_date": "2024-03-28",
+      "end_date": "2024-04-04"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 12,
+    "fields": {
+      "car": 8,
+      "renter": 4,
+      "start_date": "2024-04-05",
+      "end_date": "2024-04-12"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 13,
+    "fields": {
+      "car": 10,
+      "renter": 5,
+      "start_date": "2024-04-10",
+      "end_date": "2024-04-17"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 14,
+    "fields": {
+      "car": 14,
+      "renter": 6,
+      "start_date": "2024-04-15",
+      "end_date": "2024-04-22"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 15,
+    "fields": {
+      "car": 7,
+      "renter": 7,
+      "start_date": "2024-04-20",
+      "end_date": "2024-04-27"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 16,
+    "fields": {
+      "car": 10,
+      "renter": 8,
+      "start_date": "2024-04-25",
+      "end_date": "2024-05-02"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 17,
+    "fields": {
+      "car": 13,
+      "renter": 9,
+      "start_date": "2024-05-01",
+      "end_date": "2024-05-08"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 18,
+    "fields": {
+      "car": 3,
+      "renter": 10,
+      "start_date": "2024-05-07",
+      "end_date": "2024-05-14"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 19,
+    "fields": {
+      "car": 6,
+      "renter": 11,
+      "start_date": "2024-05-13",
+      "end_date": "2024-05-20"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 20,
+    "fields": {
+      "car": 9,
+      "renter": 12,
+      "start_date": "2024-05-19",
+      "end_date": "2024-05-26"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "pk": 21,
+    "fields": {
+      "car": 1,
+      "renter": 7,
+      "start_date": "2024-05-25",
+      "end_date": "2024-06-01"
+    }
+  }
+]
