@@ -1,19 +1,39 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h2>Rental history for {{ car.model }}</h2>
-  
-  {% if rentals %}
-    <ul>
-      {% for rental in rentals %}
-        <li>
-          <a href="{% url 'rentals:rental-detail' pk=car.id r_pk=rental.id%}">Rental #{{ rental.pk }}</a>:
-          From {{ rental.start_date }} to {{ rental.end_date }}
-          by {{ rental.renter.username }}{% if rental.renter.id == user.id %} (Me){% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>No rental history for this car yet.</p>
-  {% endif %}
+  <div class="content-div">
+    <h2 class="h1_custom">Rental history for {{ car.model }}</h2>
+    
+    {% if rentals %}
+      <table class="table" style="color: white">
+        <thead>
+          <tr>
+            <th>Rental ID</th>
+            <th>Period</th>
+            <th>Renter</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for rental in rentals %}
+            <tr>
+              <td>
+                <a style="background-color: lightgray" class="btn" href="{% url 'rentals:rental-detail' pk=car.id r_pk=rental.id %}">
+                  Rental #{{ rental.pk }}
+                </a>
+              </td>
+              <td>From {{ rental.start_date }} to {{ rental.end_date }}</td>
+              <td>
+                {{ rental.renter.username }}
+                {% if rental.renter.id == user.id %}
+                  (Me)
+                {% endif %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No rental history for this car yet.</p>
+    {% endif %}
+  </div>
 {% endblock %}

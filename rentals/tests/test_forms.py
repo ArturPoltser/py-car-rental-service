@@ -40,7 +40,7 @@ class RentalFormTest(TestCase):
 
         self.assertFalse(form.is_valid())
         self.assertEqual(
-            form.errors,
+            "".join(form.errors['__all__']),
             "The selected dates are already occupied. Occupied dates: from 2024-03-07 to 2024-03-17."
         )
 

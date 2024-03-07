@@ -1,19 +1,21 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
+  <div class="content-div">
+  <h1 class="h1_custom">
     Insurance List
-    <a href="{% url 'rentals:insurance-create' %}" class="btn btn-primary link-to-page">
-      Create
+    <a href="{% url 'rentals:insurance-create' %}" class="btn btn-success link-to-page">
+      Join new insurance company
     </a>
   </h1>
   <form method="get" action="" class="form-inline">
-    {{ search_form }}
-    <input type="submit" value="Search" class="btn btn-primary">
+    {{ search_form|crispy }}
+    <input type="submit" value="🔎" class="btn btn-secondary">
   </form>
   <br>
   {% if insurance_list %}
-    <table class="table">
+    <table class="table" style="color: white">
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -34,12 +36,12 @@
               {{ insurance.description }}
           </td>
           <td>
-              <a href="{% url 'rentals:insurance-update' pk=insurance.id %}">
+              <a class="btn" href="{% url 'rentals:insurance-update' pk=insurance.id %}">
                 Update
               </a>
             </td>
             <td>
-              <a style="color: red"
+              <a class="btn" style="color: red"
                 href="{% url 'rentals:insurance-delete' pk=insurance.id %}">
                 Delete
               </a>
@@ -51,4 +53,5 @@
   {% else %}
       <p>There are no insurances in the service.</p>
   {% endif %}
+  </div>
 {% endblock %}

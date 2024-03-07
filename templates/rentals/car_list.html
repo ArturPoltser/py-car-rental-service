@@ -1,29 +1,49 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
-<h1>Car List</h1>
-  <form method="get" action="" class="form-inline">
-    {{ search_form }}
-    <input type="submit" value="Search" class="btn btn-primary">
-  </form>
-  <br>
+  <div class="content-div">
+    <h1 class="h1_custom">Choose your Car </h1>
 
-{% if car_list %}
-    <ul>
-        {% for car in car_list %}
-            <li>
-                <a href="{% url 'rentals:car-detail' car.pk %}">{{ car.model }} ({{ car.year }})</a>
+    <form method="get" action="" class="form-inline">
+      {{ search_form|crispy }}
+      <input type="submit" value="🔎" class="btn btn-secondary">
+    </form>
+
+    <br>
+
+    {% if car_list %}
+      <table class="table" style="color: white">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for car in car_list %}
+            <tr>
+              <td><a style="background-color: lightgray" class="btn" href="{% url 'rentals:car-detail' car.pk %}">{{ car.model }}</a></td>
+              <td>{{ car.year }}</td>
+              <td>{{ car.daily_cost }}$</td>
+              <td>
                 {% if car.available_to_rent %}
-                    - Available to Rent
+                  Available to Rent
                 {% else %}
-                    - Not Available
+                  Not Available
                 {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No cars available</p>
-{% endif %}
-  <p>We can also rent your car!</p>
-  <a class="btn btn-success" href="{% url 'rentals:car-create' %}">Add your car!</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No cars available</p>
+    {% endif %}
+
+    <p>We can also rent your car!</p>
+    <a class="btn btn-success" href="{% url 'rentals:car-create' %}">Add your car!</a>
+  </div>
 {% endblock %}
