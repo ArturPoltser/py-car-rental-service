@@ -53,7 +53,10 @@ class RenterUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = RenterNameAndLicenseUpdateForm
 
     def get_success_url(self):
-        return reverse_lazy("user:renter-detail", kwargs={"pk": self.object.pk})
+        return reverse_lazy(
+            "user:renter-detail",
+            kwargs={"pk": self.object.pk}
+        )
 
 
 class RenterDeleteView(LoginRequiredMixin, generic.DeleteView):

@@ -19,11 +19,15 @@ class RentalForm(forms.ModelForm):
         end_date = cleaned_data.get("end_date")
 
         if end_date < start_date:
-            raise forms.ValidationError("End date must not be earlier than the start date.")
+            raise forms.ValidationError(
+                "End date must not be earlier than the start date."
+            )
 
         total_period = (end_date - start_date).days
         if total_period > 30:
-            raise forms.ValidationError("The total rental period must not exceed 30 days.")
+            raise forms.ValidationError(
+                "The total rental period must not exceed 30 days."
+            )
 
         car = cleaned_data.get("car")
         overlapping_rentals = Rental.objects.filter(
@@ -42,7 +46,8 @@ class RentalForm(forms.ModelForm):
                 for start, end in occupied_dates
             ]
             raise forms.ValidationError(
-                f"The selected dates are already occupied. Occupied dates: {', '.join(occupied_dates_list)}."
+                "The selected dates are already occupied. "
+                f"Occupied dates: {', '.join(occupied_dates_list)}."
             )
 
     def save(self, *args, **kwargs):
