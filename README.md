@@ -2,7 +2,7 @@
 > Project "OnTheGo Rentals" is a car rental service that provides convenient solutions for people who are on the move.
 
 ## Check it out!
-[Check "OnTheGo Rentals" project at Render]()
+[Check "OnTheGo Rentals" project at Render](https://car-rental-service-onthego-rentals.onrender.com)
 
 For login use following login and password:
 
