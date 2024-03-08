@@ -40,8 +40,9 @@ class RentalFormTest(TestCase):
 
         self.assertFalse(form.is_valid())
         self.assertEqual(
-            "".join(form.errors['__all__']),
-            "The selected dates are already occupied. Occupied dates: from 2024-03-07 to 2024-03-17."
+            "".join(form.errors["__all__"]),
+            "The selected dates are already occupied. "
+            "Occupied dates: from 2024-03-07 to 2024-03-17."
         )
 
     def test_rental_form_clean_method_valid(self):

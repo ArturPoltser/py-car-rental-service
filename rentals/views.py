@@ -121,7 +121,10 @@ class RentalCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = "rentals/rental_create.html"
 
     def get_success_url(self):
-        return reverse_lazy("rentals:car-detail", kwargs={"pk": self.object.car.id})
+        return reverse_lazy(
+            "rentals:car-detail",
+            kwargs={"pk": self.object.car.id}
+        )
 
     def get_context_data(self, **kwargs) -> dict:
         context = super().get_context_data(**kwargs)

@@ -63,7 +63,10 @@ class Car(models.Model):
 
 class Rental(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
-    renter = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    renter = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     start_date = models.DateField()
     end_date = models.DateField()
 
