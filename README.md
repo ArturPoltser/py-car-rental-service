@@ -4,6 +4,15 @@
 ## Check it out!
 [Check "OnTheGo Rentals" project at Render](https://car-rental-service-onthego-rentals.onrender.com)
 
+*If you want to deploy this project on render.com, you need to specify the following environmental variables:
+
+* DATABASE_URL
+* DJANGO_DEBUG
+* DJANGO_SECRET_KEY
+* PYTHON_VERSION
+* WEB_CONCURRENCY
+
+
 For login use following login and password:
 
 * Login: `admin.user`
@@ -39,7 +48,7 @@ Also for testing you can load already prepared data:
 python manage.py loaddata car_rental_service_db_data.json
 ```
 ## DataBase Structure:
-![demo](demo.png)
+![demo](demo/demo.png)
 
 ## Project Home Page:
-![demo_home](demo_home.png)
+![demo_home](demo/demo_home.png)

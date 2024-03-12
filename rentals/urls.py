@@ -18,7 +18,6 @@ from rentals.views import (
     RentalCreateView,
 )
 
-
 urlpatterns = [
     path("", index, name="index"),
     path(
