@@ -1,8 +1,10 @@
-from django.test import TestCase
-from rentals.models import Rental, Car, Insurance
-from rentals.forms import RentalForm, CarSearchForm, InsuranceSearchForm
-from django.contrib.auth import get_user_model
 from datetime import date
+
+from django.contrib.auth import get_user_model
+from django.test import TestCase
+
+from rentals.forms import RentalForm, CarSearchForm, InsuranceSearchForm
+from rentals.models import Rental, Car, Insurance
 
 
 class RentalFormTest(TestCase):

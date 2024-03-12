@@ -1,8 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from rentals.models import Car, Rental, Insurance
-from django.contrib.auth import get_user_model
 
+from rentals.models import Car, Rental, Insurance
 
 RENTAL_LIST_URL = reverse("rentals:rental-list", kwargs={"pk": 1})
 RENTAL_CREATE_URL = reverse("rentals:rental-create", kwargs={"pk": 1})
