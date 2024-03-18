@@ -8,7 +8,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     
-    <input type="submit" value="Submit" class="btn btn-secondary">
+    <input type="submit" value="Submit" class="btn btn-success">
     <a class="btn btn-secondary" href="{% url 'rentals:car-detail' pk=car.id %}">Cancel</a>
   </form>
   </div>

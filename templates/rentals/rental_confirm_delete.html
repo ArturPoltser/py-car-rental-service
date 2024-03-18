@@ -7,7 +7,7 @@
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
-    <a class="btn btn-primary" href={% url "rentals:rental-list" pk=rental.car.id %}>No</a>
+    <a class="btn btn-secondary" href={% url "rentals:rental-list" pk=rental.car.id %}>No</a>
   </form>
   </div>
 {% endblock %}

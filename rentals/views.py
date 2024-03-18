@@ -103,11 +103,12 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 class RentalListView(LoginRequiredMixin, generic.ListView):
     model = Rental
     context_object_name = "rentals"
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = Rental.objects.select_related("renter")
         car = get_object_or_404(Car, pk=self.kwargs["pk"])
-        return queryset.filter(car=car)
+        return queryset.filter(car=car).order_by("-id")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -122,7 +123,7 @@ class RentalCreateView(LoginRequiredMixin, generic.CreateView):
 
     def get_success_url(self):
         return reverse_lazy(
-            "rentals:car-detail",
+            "rentals:rental-list",
             kwargs={"pk": self.object.car.id}
         )
 
@@ -145,7 +146,11 @@ class RentalCreateView(LoginRequiredMixin, generic.CreateView):
             rental.car = car
             rental.renter = request.user
             rental.save()
-            return redirect("rentals:car-detail", pk=kwargs["pk"])
+            return redirect(
+                "rentals:rental-detail",
+                pk=kwargs["pk"],
+                r_pk=rental.id
+            )
 
         return render(
             request, "rentals/rental_create.html", context={
@@ -172,7 +177,10 @@ def rental_update_view(request, pk, r_pk):
         form = RentalForm(request.POST, instance=rental)
         if form.is_valid():
             form.save()
-            return redirect("rentals:rental-list", pk=car_id)
+            return redirect("rentals:rental-detail", pk=car_id, r_pk=rental.id)
+
+        context = {"form": form, "rental": rental}
+        return render(request, "rentals/rental_update.html", context)
 
     form = RentalForm(instance=rental)
     context = {"form": form, "rental": rental}

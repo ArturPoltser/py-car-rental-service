@@ -37,6 +37,9 @@ class RentalForm(forms.ModelForm):
             end_date__gt=start_date
         )
 
+        if self.instance:
+            overlapping_rentals = overlapping_rentals.exclude(id=self.instance.id)
+
         if overlapping_rentals.exists():
             occupied_dates = overlapping_rentals.values_list(
                 "start_date",

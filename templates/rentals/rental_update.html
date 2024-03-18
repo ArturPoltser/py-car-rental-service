@@ -9,8 +9,8 @@
     
     {{ form.as_p }}
     
-    <input type="submit" value="Submit" class="btn btn-primary">
-    <a class="btn btn-primary" href={% url "rentals:rental-list" pk=rental.car.id %}>Cancel</a>
+    <input type="submit" value="Submit" class="btn btn-success">
+    <a class="btn btn-secondary" href={% url "rentals:rental-list" pk=rental.car.id %}>Cancel</a>
   </form>
   
   </div>
